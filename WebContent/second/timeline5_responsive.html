@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<style type="text/css">
+body {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background: #fdfdfd;
+}
+
+.timeline {
+	list-style: none;
+	padding: 20px 0 20px;
+	position: relative;
+}
+
+.timeline:before {
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	content: " ";
+	width: 3px;
+	background-color: #eeeeee;
+	left: 50%;
+	margin-left: -1.5px;
+}
+
+.profile-cover {
+	-webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline>li {
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.timeline>li:before, .timeline>li:after {
+	content: " ";
+	display: table;
+}
+
+.timeline>li:after {
+	clear: both;
+}
+
+.timeline>li:before, .timeline>li:after {
+	content: " ";
+	display: table;
+}
+
+.timeline>li:after {
+	clear: both;
+}
+
+.timeline>li>.timeline-panel {
+	width: 46%;
+	float: left;
+	border: 1px solid #d4d4d4;
+	/*border-radius: 2px;*/
+	/*padding: 20px;*/
+	position: relative;
+	-webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline>li>.timeline-panel:before {
+	position: absolute;
+	top: 26px;
+	right: -15px;
+	display: inline-block;
+	border-top: 15px solid transparent;
+	border-left: 15px solid #ccc;
+	border-right: 0 solid #ccc;
+	border-bottom: 15px solid transparent;
+	content: " ";
+}
+
+.timeline>li>.timeline-panel:after {
+	position: absolute;
+	top: 27px;
+	right: -14px;
+	display: inline-block;
+	border-top: 14px solid transparent;
+	border-left: 14px solid #fff;
+	border-right: 0 solid #fff;
+	border-bottom: 14px solid transparent;
+	content: " ";
+}
+
+.timeline>li>.timeline-badge {
+	color: #fff;
+	width: 24px;
+	height: 24px;
+	line-height: 50px;
+	font-size: 1.4em;
+	text-align: center;
+	position: absolute;
+	top: 16px;
+	left: 50%;
+	margin-left: -12px;
+	/*background-color: #999999;*/
+	z-index: 100;
+	/*
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  */
+}
+
+.timeline>li.timeline-inverted>.timeline-panel {
+	float: right;
+}
+
+.timeline>li.timeline-inverted>.timeline-panel:before {
+	border-left-width: 0;
+	border-right-width: 15px;
+	left: -15px;
+	right: auto;
+}
+
+.timeline>li.timeline-inverted>.timeline-panel:after {
+	border-left-width: 0;
+	border-right-width: 14px;
+	left: -14px;
+	right: auto;
+}
+
+.timeline-badge>a {
+	color: #C5C7C5 !important;
+}
+
+.timeline-badge a:hover {
+	color: #FF531F !important;
+}
+
+.timeline-title {
+	margin-top: 0;
+	color: inherit;
+}
+
+.timeline-body>p, .timeline-body>ul {
+	padding: 20px;
+	margin-bottom: 0;
+	background: #fff;
+}
+
+.timeline-body>p+p {
+	margin-top: 5px;
+}
+
+.timeline-footer {
+	padding: 20px;
+	background-color: #f4f4f4;
+}
+
+.timeline-header {
+	padding: 20px;
+	background-color: #f4f4f4;
+}
+
+.timeline-footer>a {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.timeline-heading {
+	background: #fff;
+}
+
+.facebook-share-box {
+	width: 100%;
+}
+
+.facebook-share-box .share-form {
+	padding: 2%;
+}
+
+.facebook-share-box .share {
+	-webkit-transition: 0.1s ease-out height;
+	-moz-transition: 0.1s ease-out height;
+	-ms-transition: 0.1s ease-out height;
+	-o-transition: 0.1s ease-out height;
+	transition: 0.1s ease-out height;
+	clear: both;
+	background: white;
+	border: 2px solid #dddddd;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.facebook-share-box .share .arrow {
+	background: url(../img/arrow.png) no-repeat #dddddd;
+	position: absolute;
+	width: 14px;
+	height: 10px;
+	left: 4px;
+	display: inline;
+	top: -10px;
+	-webkit-transition: 0.3s ease-out all;
+	-moz-transition: 0.3s ease-out all;
+	-ms-transition: 0.3s ease-out all;
+	-o-transition: 0.3s ease-out all;
+	transition: 0.3s ease-out all;
+}
+
+.facebook-share-box .post-types li a {
+	color: #085083;
+	text-decoration: none;
+}
+
+.facebook-share-box .post-types li a.active {
+	color: #404040;
+}
+
+.facebook-share-box .post-types {
+	padding-left: 5px;
+}
+
+.facebook-share-box ul {
+	list-style: none;
+	margin-bottom: 9px;
+}
+
+.facebook-share-box .post-types li {
+	display: inline;
+	margin-right: 10px;
+}
+
+.message {
+	border-radius: 0;
+	border: none;
+}
+
+.panel {
+	border-radius: 0;
+	border: none;
+	margin-bottom: 0;
+}
+
+.timeline-images {
+	margin: 2px;
+}
+
+.videowrapper {
+	float: none;
+	clear: both;
+	width: 100%;
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+}
+
+.videowrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media ( max-width : 767px) {
+	ul.timeline:before {
+		left: 40px;
+	}
+	ul.timeline>li>.timeline-panel {
+		width: calc(100% - 90px);
+		width: -moz-calc(100% - 90px);
+		width: -webkit-calc(100% - 90px);
+	}
+	ul.timeline>li>.timeline-badge {
+		left: 28px;
+		margin-left: 0;
+		top: 20px
+	}
+	ul.timeline>li>.timeline-panel {
+		float: right;
+		margin-right: 2%;
+	}
+	ul.timeline>li>.timeline-panel:before {
+		border-left-width: 0;
+		border-right-width: 15px;
+		left: -15px;
+		right: auto;
+	}
+	ul.timeline>li>.timeline-panel:after {
+		border-left-width: 0;
+		border-right-width: 14px;
+		left: -14px;
+		right: auto;
+	}
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	  $('.status').click(function() { $('.arrow').css("left", 0);});
+	  $('.photos').click(function() { $('.arrow').css("left", 80);});
+	  $('.videos').click(function() { $('.arrow').css("left", 160);});
+	});
+</script>
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h2 class="text-center">Responsive facebook style timeline design - wsnippets.com</h2>
+				<ul class="timeline">
+					<li>
+						<div class="timeline-badge primary">
+							<a><i class="glyphicon glyphicon-time invert" title="Now" id=""></i></a>
+						</div>
+						<div class="timeline-panel">
+							<form action="update.php" method="post" role="form" enctype="multipart/form-data" class="facebook-share-box">
+								<div class="timeline-body">
+									<div class="share-form">
+										<ul class="post-types">
+											<li class="post-type"><a class="status" id="shareType" href="#"><i class="icon icon-file"></i> Status</a></li>
+											<li class="post-type"><a class="photos" id="shareType" href="#"><i class="icon icon-camera"></i> Photos</a></li>
+											<li class="post-type"><a class="videos" id="shareType" href="#"><i class="icon icon-film"></i> Video</a></li>
+										</ul>
+										<div class="share">
+											<div class="arrow"></div>
+											<div>
+												<textarea name="message" cols="40" rows="10" id="status_message" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
+											</div>
+											<div class="image hide">
+												<input type="file" class="form-control" name="image" id="image">
+											</div>
+											<div class="video hide">
+												<input type="text" class="form-control" placeholder="Youtube or Vimeo video URL" id="videoUrl" name="videoUrl">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="timeline-footer clearfix">
+									<div class="pull-right">
+										<input type="submit" name="submit" value="Post" id="btn-share" class="btn btn-primary">
+									</div>
+								</div>
+							</form>
+						</div>
+					</li>
+					<li class="timeline-inverted">
+						<div class="timeline-badge primary">
+							<a title="11 hours ago via Twitter"><i class="glyphicon glyphicon-time invert" id=""></i></a>
+						</div>
+						<div class="timeline-panel">
+							<div class="timeline-header">
+								<div class="row">
+									<div class="col-xs-2">
+										<img class="img-responsive img-rounded" src="http://0.gravatar.com/avatar/43a5669f2e4d2342701ed560d453a0dd?s=50&d=&r=G">
+									</div>
+									<div class="col-xs-8">
+										<a>Azhagupandian </a> shared 6 hours ago
+									</div>
+								</div>
+							</div>
+							<div class="timeline-heading">
+								<div class="videowrapper">
+									<iframe height="300" src="http://www.youtube.com/embed/IuLG6WqjOEo" frameborder="0" allowfullscreen=""></iframe>
+								</div>
+							</div>
+							<div class="timeline-body">
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+									galley of type and scrambled it to make a type specimen book.</p>
+
+							</div>
+
+							<div class="timeline-footer">
+								<div class="media">
+									<a class="pull-left" href="#"> <img class="media-object" src="http://0.gravatar.com/avatar/43a5669f2e4d2342701ed560d453a0dd?s=50&d=&r=G" />
+									</a>
+									<div class="media-body">
+										<p>Looking cool</p>
+										<a href="#">January 19 at 8:15pm</a>
+									</div>
+								</div>
+								<hr>
+								<div class="media">
+									<a class="pull-left" href="#"> <img class="media-object" src="http://0.gravatar.com/avatar/43a5669f2e4d2342701ed560d453a0dd?s=50&d=&r=G" />
+									</a>
+									<div class="media-body">Looking cool</div>
+								</div>
+								<hr>
+								<div class="media">
+									<a class="pull-left" href="#"> <img class="media-object" src="http://0.gravatar.com/avatar/43a5669f2e4d2342701ed560d453a0dd?s=50&d=&r=G" />
+									</a>
+									<div class="media-body">Looking cool</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="timeline-badge primary">
+							<a title="11 hours ago via Twitter"><i class="glyphicon glyphicon-time invert" id=""></i></a>
+						</div>
+						<div class="timeline-panel">
+							<div class="timeline-header">
+								<div class="row">
+									<div class="col-xs-2">
+										<img class="img-responsive img-rounded" src="http://0.gravatar.com/avatar/43a5669f2e4d2342701ed560d453a0dd?s=50&d=&r=G">
+									</div>
+									<div class="col-xs-8">
+										<a>Azhagupandian </a> shared 6 hours ago
+									</div>
+								</div>
+							</div>
+							<div class="timeline-heading">
+								<img class="img-responsive" src="img/img-430-135.png" />
+								<div class="timeline-images">
+									<div class="row">
+										<div class="col-xs-4">
+											<img src="img/img-200.png" class="img-thumbnail img-responsive" />
+										</div>
+										<div class="col-xs-4">
+											<img src="img/img1-200.png" class="img-thumbnail img-responsive" />
+										</div>
+										<div class="col-xs-4">
+											<img src="img/img-200.png" class="img-thumbnail img-responsive" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="timeline-body">
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+									galley of type and scrambled it to make a type specimen book.</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
